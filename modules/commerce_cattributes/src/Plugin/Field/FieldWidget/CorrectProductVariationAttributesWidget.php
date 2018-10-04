@@ -125,7 +125,7 @@ class CorrectProductVariationAttributesWidget extends ProductVariationWidgetBase
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     /** @var \Drupal\commerce_product\Entity\ProductInterface $product */
     $product = $form_state->get('product');
-    $variations = $this->loadEnabledVariations($product);
+    $variations = $this->variationStorage->loadEnabled($product);
     if (count($variations) === 0) {
       // Nothing to purchase, tell the parent form to hide itself.
       $form_state->set('hide_form', TRUE);
